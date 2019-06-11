@@ -1,1 +1,50 @@
+.settingsForm-label{
+  font-size: 2em;
+  margin-bottom: 10px
+}
 
+.settingsForm-input{
+  font-size: 1.5em;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 30px
+}
+
+.textarea{
+  height: 150px;
+}
+
+.email{
+  margin-bottom: 10px
+}
+
+.select{
+  height: 50px;
+}
+
+.password{
+  margin-bottom: 60px
+}
+
+.submit{
+  background-color: #e5e5e5;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: 1px solid gray;
+  margin-bottom: 0px
+}
+
+.settingsForm-checkbox-container{
+  display: flex;
+  margin-bottom: 30px
+}
+
+.checkbox-text{
+  font-size: 1.2em;
+  margin-left: 10px;
+}
+
+.checkbox {
+  width: 25px;
+	height: 25px;
+}

@@ -7,18 +7,20 @@ const SettingsForm = (props) => {
     <div className="settingsForm-container">
       <form className="settings">
         <label>
-          <h3>Name</h3>
-          <input type="text"/>
+          <h3 className="settingsForm-label">Name</h3>
+          <input className="settingsForm-input" type="text"/>
         </label>
         <label>
-          <h3>Email</h3>
-          <input type="text"/>
-          <input type="checkbox"/>
-          <p className="checkbox-text"> check to receive email updates</p>
+          <h3 className="settingsForm-label">Email</h3>
+          <input className="settingsForm-input email" type="text"/>
+          <div className="settingsForm-checkbox-container">
+            <input className="checkbox" type="checkbox"/>
+            <p className="checkbox-text"> check to receive email updates</p>
+          </div>
         </label>
         <label>
-          <h3>Location</h3>
-          <select>
+          <h3 className="settingsForm-label">Location</h3>
+          <select className="settingsForm-input select" >
             <option value="grapefruit">Grapefruit</option>
             <option value="lime">Lime</option>
             <option value="coconut">Coconut</option>
@@ -26,14 +28,14 @@ const SettingsForm = (props) => {
           </select>
         </label>
         <label>
-          <h3>Bio</h3>
-          <textarea />
+          <h3 className="settingsForm-label">Bio</h3>
+          <textarea className="settingsForm-input textarea"/>
         </label>
         <label>
-          <h3>Password</h3>
-          <input type="Password"/>
+          <h3 className="settingsForm-label">Password</h3>
+          <input className="settingsForm-input password" type="Password"/>
         </label>
-        <input type="submit" value="Submit" />
+        <input className="settingsForm-input submit" type="submit" value="Submit" />
       </form>
     </div>
   )

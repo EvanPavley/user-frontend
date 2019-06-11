@@ -11,11 +11,8 @@ class App extends React.Component {
       <div className="app-container">
         <div className="navbar"></div>
         <div className="userSettings-container">
-          <div className="userSettings-card">
-            <h1 className="title">User Settings</h1>
-            <hr></hr>
-            <SettingsForm />
-          </div>
+          <h1 className="title">User Settings</h1>
+          <SettingsForm />
         </div>
       </div>
     );
