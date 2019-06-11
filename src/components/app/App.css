@@ -1,1 +1,15 @@
+/* A quick way to horizontally center*/
+.userSettings-container{
+  display: grid;
+}
+.userSettings-card{
+  margin:auto;
+  border: 1px dashed black
+}
 
+.navbar{
+  height: 150px;
+  width: auto;
+  border: 1px dashed black;
+  margin-bottom: 80px;
+}

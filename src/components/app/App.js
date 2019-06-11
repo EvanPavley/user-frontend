@@ -9,8 +9,14 @@ class App extends React.Component {
   render () {
     return (
       <div className="app-container">
-        <h1 className="title">User Settings</h1>
-        <SettingsForm />
+        <div className="navbar"></div>
+        <div className="userSettings-container">
+          <div className="userSettings-card">
+            <h1 className="title">User Settings</h1>
+            <hr></hr>
+            <SettingsForm />
+          </div>
+        </div>
       </div>
     );
   }

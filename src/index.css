@@ -1,10 +1,13 @@
+/* A simple reset*/
 *{
   box-sizing: border-box;
+  display: block;
+
   margin: 0;
   padding: 0;
-  display: block;
 }
 
+/* resetting these to display none*/
 head, title, link, meta, style, script {
 	display: none;
 }
