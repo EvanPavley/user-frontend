@@ -8,8 +8,8 @@ class App extends React.Component {
 
   render () {
     return (
-      <div className="App">
-        <p>Hi</p>
+      <div className="app-container">
+        <h1 className="title">User Settings</h1>
         <SettingsForm />
       </div>
     );
