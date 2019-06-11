@@ -1,20 +1,15 @@
 .userSettings-container{
-  margin: auto;
-  border: 1px dashed black;
+  margin: 80px auto;
+  border: 1px solid black;
 
   width: 900px;
 
   padding-top: 50px;
-  padding-bottom: 50px;
-  padding-left: 55px;
-  padding-right: 55px;
-}
+  padding-bottom: 60px;
+  padding-left: 80px;
+  padding-right: 80px;
 
-.navbar{
-  height: 150px;
-  width: auto;
-  border: 1px dashed black;
-  margin-bottom: 10px;
+  border-radius: 50px 5px;
 }
 
 .title{

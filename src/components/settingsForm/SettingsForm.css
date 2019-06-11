@@ -7,7 +7,8 @@
   font-size: 1.5em;
   padding: 10px;
   width: 100%;
-  margin-bottom: 30px
+  margin-bottom: 30px;
+  border-radius: 5px;
 }
 
 .textarea{
@@ -28,10 +29,13 @@
 
 .submit{
   background-color: #e5e5e5;
+
   padding-top: 20px;
   padding-bottom: 20px;
+  margin-bottom: 0px;
+
   border: 1px solid gray;
-  margin-bottom: 0px
+  border-radius: 50px;
 }
 
 .settingsForm-checkbox-container{
