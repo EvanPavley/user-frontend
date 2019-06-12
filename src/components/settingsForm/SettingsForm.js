@@ -5,14 +5,14 @@ const SettingsForm = (props) => {
 
   return (
     <div className="settingsForm-container">
-      <form className="settings" onSubmit={props.handleSubmit}>
+      <form className="settings" onSubmit={(e) => props.handleSubmit(e)}>
         <label>
           <h3 className="settingsForm-label">Name</h3>
           <input
             className="settingsForm-input"
             type="text"
             name="name"
-            onChange={props.handleInputChange}
+            onChange={(e) => props.handleChange(e)}
             value={props.inputs.name}
             />
         </label>
@@ -22,7 +22,7 @@ const SettingsForm = (props) => {
             className="settingsForm-input email"
             type="text"
             name="email"
-            onChange={props.handleInputChange}
+            onChange={(e) => props.handleChange(e)}
             value={props.inputs.email}
             />
           <div className="settingsForm-checkbox-container">
@@ -30,8 +30,8 @@ const SettingsForm = (props) => {
               className="checkbox"
               type="checkbox"
               name="updates"
-              onChange={props.handleInputChange}
-              value={props.inputs.updates}
+              onChange={(e) => props.handleChange(e)}
+              checked={props.inputs.updates}
               />
             <p className="checkbox-text"> check to receive email updates</p>
           </div>
@@ -41,7 +41,7 @@ const SettingsForm = (props) => {
           <select
             className="settingsForm-input select"
             name="location"
-            onChange={props.handleInputChange}
+            onChange={(e) => props.handleChange(e)}
             value={props.inputs.location}
             >
             <option value="grapefruit">Grapefruit</option>
@@ -52,11 +52,22 @@ const SettingsForm = (props) => {
         </label>
         <label>
           <h3 className="settingsForm-label">Bio</h3>
-          <textarea className="settingsForm-input textarea"/>
+          <textarea
+            className="settingsForm-input textarea"
+            name="bio"
+            onChange={(e) => props.handleChange(e)}
+            value={props.inputs.bio}
+            />
         </label>
         <label>
           <h3 className="settingsForm-label">Password</h3>
-          <input className="settingsForm-input password" type="Password"/>
+          <input
+            className="settingsForm-input password"
+            type="Password"
+            name="password"
+            onChange={(e) => props.handleChange(e)}
+            value={props.inputs.password}
+            />
         </label>
         <input className="settingsForm-input submit" type="submit" value="Update" />
       </form>

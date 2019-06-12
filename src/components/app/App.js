@@ -5,15 +5,27 @@ import SettingsForm from'../settingsForm/SettingsForm'
 
 class App extends React.Component {
   state = {
-
+    name: '',
+    email: '',
+    updates: true,
+    location: '',
+    bio: '',
+    password: '',
   }
 
-  handleSubmit = () => {
-
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(this.state);
   }
 
-  handleChange = () => {
+  handleChange = (event) => {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
 
+    this.setState({
+      [name]: value
+    });
   }
   render () {
     return (
