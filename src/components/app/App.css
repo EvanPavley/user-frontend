@@ -1,11 +1,11 @@
 .userSettings-container{
   background-color: white;
 
-  margin: 80px auto;
-  max-width: 900px;
+  margin: 35px auto;
+  max-width: 700px;
   width: auto;
-  padding-top: 50px;
-  padding-bottom: 80px;
+  padding-top: 35px;
+  padding-bottom: 60px;
   padding-left: 120px;
   padding-right: 120px;
 
@@ -14,6 +14,6 @@
 
 .title{
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 3em
+  margin-bottom: 35px;
+  font-size: 2.3em
 }
