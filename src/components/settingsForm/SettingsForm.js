@@ -13,7 +13,7 @@ const SettingsForm = (props) => {
             type="text"
             name="name"
             onChange={(e) => props.handleChange(e)}
-            value={props.inputs.name}
+            value={props.settings.name}
             />
         </label>
         <label>
@@ -23,7 +23,7 @@ const SettingsForm = (props) => {
             type="text"
             name="email"
             onChange={(e) => props.handleChange(e)}
-            value={props.inputs.email}
+            value={props.settings.email}
             />
           <div className="settingsForm-checkbox-container">
             <input
@@ -31,7 +31,7 @@ const SettingsForm = (props) => {
               type="checkbox"
               name="updates"
               onChange={(e) => props.handleChange(e)}
-              checked={props.inputs.updates}
+              checked={props.settings.updates}
               />
             <p className="checkbox-text"> check to receive email updates</p>
           </div>
@@ -42,12 +42,12 @@ const SettingsForm = (props) => {
             className="settingsForm-input select"
             name="location"
             onChange={(e) => props.handleChange(e)}
-            value={props.inputs.location}
+            value={props.settings.location}
             >
-            <option value="grapefruit">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
+            <option value="New York, NY">New York, NY</option>
+            <option value="Chicago, IL">Chicago, IL</option>
+            <option value="Seattle, WA">Seattle, WA</option>
+            <option value="Los Angeles, CA">Los Angeles, CA</option>
           </select>
         </label>
         <label>
@@ -56,7 +56,7 @@ const SettingsForm = (props) => {
             className="settingsForm-input textarea"
             name="bio"
             onChange={(e) => props.handleChange(e)}
-            value={props.inputs.bio}
+            value={props.settings.bio}
             />
         </label>
         <label>
@@ -66,10 +66,13 @@ const SettingsForm = (props) => {
             type="Password"
             name="password"
             onChange={(e) => props.handleChange(e)}
-            value={props.inputs.password}
+            value={props.settings.password}
             />
         </label>
-        <input className="settingsForm-input submit" type="submit" value="Update" />
+        <input
+          className="settingsForm-input submit"
+          type="submit"
+          value={props.settings.isClear === true ? ("Submit"):("Update")} />
       </form>
     </div>
   )
