@@ -19,7 +19,7 @@ class App extends React.Component {
 
   componentDidMount() {
     fetch(BACKEND_URL)
-      .then(r => r.json())
+      .then(response => response.json())
       .then(currentSettings => {
         currentSettings[0] !== undefined ?
           this.setState({
@@ -51,7 +51,49 @@ class App extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);
+    this.state.isClear === true ?
+    fetch(BACKEND_URL, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: this.state.name,
+          email: this.state.email,
+          updates: this.state.updates,
+          location: this.state.location,
+          bio: this.state.bio,
+          password: this.state.password,
+        }),
+    })
+      .then(response => response.json())
+      .then(currentSettings => {
+        this.setState({
+          id: currentSettings._id,
+          isClear: false,
+        })
+      })
+    :
+    fetch(`${BACKEND_URL}/${this.state.id}`, {
+        method: 'PUT',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: this.state.name,
+          email: this.state.email,
+          updates: this.state.updates,
+          location: this.state.location,
+          bio: this.state.bio,
+          password: this.state.password,
+        }),
+    })
+      .then(response => response.json())
+      .then(currentSettings => {
+        console.log(currentSettings);
+      })
   }
 
   render () {
