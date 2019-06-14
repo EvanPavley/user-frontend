@@ -2,19 +2,32 @@
   background-color: white;
 
   margin: 35px auto;
-  max-width: 700px;
+  max-width: 550px;
   width: auto;
-  padding-top: 35px;
-  padding-bottom: 60px;
-  padding-left: 120px;
-  padding-right: 120px;
+  padding-top: 30px;
+  padding-bottom: 55px;
+  padding-left: 80px;
+  padding-right: 80px;
 
   border-radius: 50px 5px;
+
+  background-image:url('../../assets/images/line.svg');
+  background-repeat: no-repeat;
+  background-position: right 20px top 12.5%, 0 0;
+  background-size: 500px;
 }
 
 .title{
   text-align: center;
-  margin-bottom: 35px;
+  margin-bottom: 60px;
   font-size: 2.3em;
   color: #2d5487;
+}
+
+.user-icon{
+  height: 45px;
+  width: 45px;
+  position: relative;
+  float:left;
+  margin-left: 50px;
 }

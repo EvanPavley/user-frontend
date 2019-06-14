@@ -1,7 +1,8 @@
 import React from 'react'
 
 import './App.css';
-import SettingsForm from'../settingsForm/SettingsForm'
+import SettingsForm from '../settingsForm/SettingsForm'
+import userIcon from '../../assets/images/userIcon.svg'
 const BACKEND_URL = 'http://localhost:3001/userSettings'
 
 class App extends React.Component {
@@ -52,12 +53,13 @@ class App extends React.Component {
     event.preventDefault();
     console.log(this.state);
   }
-  
+
   render () {
     console.log(this.state);
     return (
       <div className="app-container">
         <div className="userSettings-container">
+          <img className="user-icon" src={userIcon} alt="userIcon"/>
           <h1 className="title">User Settings</h1>
           <SettingsForm
             settings={this.state}
