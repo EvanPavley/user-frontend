@@ -7,9 +7,9 @@ const SettingsForm = (props) => {
     <div className="settingsForm-container">
       <form className="settings" onSubmit={(e) => props.handleSubmit(e)}>
         <label>
-          <h3 className="settingsForm-label">Name</h3>
+          <h3 className="settingsForm-label invalid-label">Name</h3>
           <input
-            className="settingsForm-input"
+            className="settingsForm-input invalid-input"
             type="text"
             name="name"
             onChange={(e) => props.handleChange(e)}

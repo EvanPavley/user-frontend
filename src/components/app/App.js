@@ -10,10 +10,16 @@ class App extends React.Component {
     name: '',
     email: '',
     updates: true,
-    location: '',
+    location: 'New York, NY',
     bio: '',
     password: '',
     isClear: true,
+    isValid: {
+      name: true,
+      email: true,
+      bio: true,
+      password: true,
+    }
   }
 
   componentDidMount() {
@@ -36,7 +42,6 @@ class App extends React.Component {
             isClear: true,
           })
       })
-      .catch(error => console.log(error))
   }
 
   handleChange = (event) => {
@@ -69,12 +74,22 @@ class App extends React.Component {
     })
       .then(response => response.json())
       .then(currentSettings => {
+        currentSettings.errors !== undefined ?
+        Object.keys(currentSettings.errors).forEach(feild => {
+          this.setState(prevState => ({
+            ...prevState,
+            isValid: {
+              ...prevState.isValid,
+              [feild]: false
+            }
+          }))
+        })
+        :
         this.setState({
           id: currentSettings._id,
           isClear: false,
         })
       })
-      .catch(error => console.log(error))
     :
     fetch(`${BACKEND_URL}/${this.state.id}`, {
         method: 'PUT',
@@ -95,7 +110,6 @@ class App extends React.Component {
       .then(currentSettings => {
         console.log(currentSettings);
       })
-      .catch(error => console.log(error))
   }
 
   handleClear = (event) => {
@@ -110,7 +124,7 @@ class App extends React.Component {
           name: '',
           email: '',
           updates: true,
-          location: '',
+          location: 'New York, NY',
           bio: '',
           password: '',
           isClear: true,
@@ -122,7 +136,7 @@ class App extends React.Component {
       name: '',
       email: '',
       updates: true,
-      location: '',
+      location: 'New York, NY',
       bio: '',
       password: '',
       isClear: true,
