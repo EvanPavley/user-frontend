@@ -70,6 +70,11 @@ const SettingsForm = (props) => {
             />
         </label>
         <input
+          className="settingsForm-input submit clear"
+          type="button"
+          value="Clear"
+          onClick={props.handleClear} />
+        <input
           className="settingsForm-input submit"
           type="submit"
           value={props.settings.isClear === true ? ("Submit"):("Update")} />

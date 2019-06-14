@@ -1,5 +1,4 @@
 import React from 'react'
-
 import './App.css';
 import SettingsForm from '../settingsForm/SettingsForm'
 import userIcon from '../../assets/images/userIcon.svg'
@@ -37,6 +36,7 @@ class App extends React.Component {
             isClear: true,
           })
       })
+      .catch(error => console.log(error))
   }
 
   handleChange = (event) => {
@@ -50,7 +50,7 @@ class App extends React.Component {
   }
 
   handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     this.state.isClear === true ?
     fetch(BACKEND_URL, {
         method: 'POST',
@@ -74,6 +74,7 @@ class App extends React.Component {
           isClear: false,
         })
       })
+      .catch(error => console.log(error))
     :
     fetch(`${BACKEND_URL}/${this.state.id}`, {
         method: 'PUT',
@@ -94,10 +95,43 @@ class App extends React.Component {
       .then(currentSettings => {
         console.log(currentSettings);
       })
+      .catch(error => console.log(error))
   }
 
+  handleClear = (event) => {
+    this.state.isClear === false ?
+    fetch(`${BACKEND_URL}/${this.state.id}`, {
+        method: 'DELETE'
+      })
+      .then(response => response.json())
+      .then(currentSettings => {
+        this.setState({
+          id: '',
+          name: '',
+          email: '',
+          updates: true,
+          location: '',
+          bio: '',
+          password: '',
+          isClear: true,
+        })
+      })
+    :
+    this.setState({
+      id: '',
+      name: '',
+      email: '',
+      updates: true,
+      location: '',
+      bio: '',
+      password: '',
+      isClear: true,
+    })
+  }
+
+
   render () {
-    console.log(this.state);
+    console.log(this.state)
     return (
       <div className="app-container">
         <div className="userSettings-container">
@@ -107,6 +141,7 @@ class App extends React.Component {
             settings={this.state}
             handleSubmit={this.handleSubmit}
             handleChange={this.handleChange}
+            handleClear={this.handleClear}
             />
         </div>
       </div>

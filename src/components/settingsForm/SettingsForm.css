@@ -37,10 +37,6 @@
   background-color: #f2f7ff;
 }
 
-.password{
-  margin-bottom: 50px
-}
-
 .submit{
   background-color: #458EED;
   color: white;
@@ -56,6 +52,13 @@
   border-radius: 50px;
 
   text-transform: uppercase;
+}
+
+.clear{
+  background-color: #f2f7ff;
+  color: #458EED;
+  border: 2px solid #458EED;
+  margin-bottom: 20px;
 }
 
 .settingsForm-checkbox-container{
