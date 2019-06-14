@@ -1,3 +1,10 @@
+/*
+App:
+The main component for the frontend of this user settings app
+***
+This component does the heavy lifting for this app. Because this app is not very complex, there only needed to be two components, all of the state is held in app and its manipulated via call back fucntions passed down to the settings form through props. All of the interaction with the server happens in this component.
+*/
+
 import React from 'react'
 import './App.css';
 import SettingsForm from '../settingsForm/SettingsForm'
@@ -23,12 +30,14 @@ class App extends React.Component {
     }
   }
 
+  //initial fetch on componentDidMount so that the app is already rendered when async actions start
   componentDidMount() {
     fetch(BACKEND_URL)
       .then(response => response.json())
       .then(currentSettings => {
-        //checks to see if there are settings in the API
+        //checks to see if there are any settings in the API
         currentSettings[0] !== undefined ?
+          //if there are, use the data to set state
           this.setState({
             id: currentSettings[0]._id,
             name: currentSettings[0].name,
@@ -53,6 +62,7 @@ class App extends React.Component {
       })
   }
 
+  //to reset the nested isValid state
   resetValidations = () => {
     this.setState(prevState => ({
       ...prevState,
@@ -65,6 +75,7 @@ class App extends React.Component {
     }))
   }
 
+  //resets all state for when the form is cleared
   resetState = () => {
     this.setState({
       id: '',
@@ -84,6 +95,7 @@ class App extends React.Component {
     })
   }
 
+  //finds the invalid feilds and sets them to false in the isValid state. informs the UI
   findInvalid = (feilds) => {
     feilds.forEach(feild => {
       this.setState(prevState => ({
@@ -96,8 +108,10 @@ class App extends React.Component {
     })
   }
 
+  //controls the settings form
   handleChange = (event) => {
     const target = event.target;
+    //if its a check box, sets the value to true or false
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
@@ -108,8 +122,11 @@ class App extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+    //resets the validations on a submit so that the validity checker can be updated
     this.resetValidations()
+    //checks if the form is clear
     this.state.isClear === true ?
+    //if it is, send a post request to the server
     fetch(BACKEND_URL, {
         method: 'POST',
         headers: {
@@ -127,9 +144,12 @@ class App extends React.Component {
     })
       .then(response => response.json())
       .then(currentSettings => {
+        //checks if there are errors
         currentSettings.errors !== undefined ?
+        //if so, it finds the invalid feilds
         this.findInvalid(Object.keys(currentSettings.errors))
         :
+        //if no errors, set the id, its filled, and reset valid
         this.setState(prevState => ({
           ...prevState,
           id: currentSettings._id,
@@ -143,6 +163,7 @@ class App extends React.Component {
         }))
       })
     :
+    //if the form is not clear, send a put request to the database to update the feilds
     fetch(`${BACKEND_URL}/${this.state.id}`, {
         method: 'PUT',
         headers: {
@@ -160,15 +181,20 @@ class App extends React.Component {
     })
       .then(response => response.json())
       .then(currentSettings => {
+        //checks if there are errors
         currentSettings.errors !== undefined ?
+        //if so, it finds the invalid feilds
         this.findInvalid(Object.keys(currentSettings.errors))
         :
+        //if no errors just reset valid
         this.resetValidations()
       })
   }
 
   handleClear = (event) => {
+    //if the data is backed up to the database
     this.state.isClear === false ?
+    //send a DELET request to the server
     fetch(`${BACKEND_URL}/${this.state.id}`, {
         method: 'DELETE'
       })
@@ -177,6 +203,7 @@ class App extends React.Component {
         this.resetState()
       })
     :
+    //if theres no data backed up, just clear the state
     this.resetState()
   }
 

@@ -1,8 +1,14 @@
+/*
+Settings Form:
+Functional component for the settingsForm
+***
+This component controls conditional styling of labels and input feilds using if statments via the turnary operator. Conditional styling happens when input invalid or the user is summiting data for the first time. Useing props to make the form controlled by state in the App component.
+*/
+
 import React from 'react';
 import './SettingsForm.css';
 
 const SettingsForm = (props) => {
-
   return (
     <div className="settingsForm-container">
       <form className="settings" onSubmit={(e) => props.handleSubmit(e)}>
