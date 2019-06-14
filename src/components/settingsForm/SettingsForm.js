@@ -7,9 +7,9 @@ const SettingsForm = (props) => {
     <div className="settingsForm-container">
       <form className="settings" onSubmit={(e) => props.handleSubmit(e)}>
         <label>
-          <h3 className="settingsForm-label invalid-label">Name</h3>
+          <h3 className={props.settings.isValid.name === true ? ("settingsForm-label"):("settingsForm-label invalid-label")} >Name</h3>
           <input
-            className="settingsForm-input invalid-input"
+            className={props.settings.isValid.name === true ? ("settingsForm-input"):("settingsForm-input invalid-input")}
             type="text"
             name="name"
             onChange={(e) => props.handleChange(e)}
@@ -17,9 +17,9 @@ const SettingsForm = (props) => {
             />
         </label>
         <label>
-          <h3 className="settingsForm-label">Email</h3>
+          <h3 className={props.settings.isValid.email === true ? ("settingsForm-label"):("settingsForm-label invalid-label")}>Email</h3>
           <input
-            className="settingsForm-input email"
+            className={props.settings.isValid.email === true ? ("settingsForm-input email"):("settingsForm-input email invalid-input")}
             type="text"
             name="email"
             onChange={(e) => props.handleChange(e)}
@@ -51,18 +51,18 @@ const SettingsForm = (props) => {
           </select>
         </label>
         <label>
-          <h3 className="settingsForm-label">Bio</h3>
+          <h3 className={props.settings.isValid.bio === true ? ("settingsForm-label"):("settingsForm-label invalid-label")}>Bio</h3>
           <textarea
-            className="settingsForm-input textarea"
+            className={props.settings.isValid.bio === true ? ("settingsForm-input textarea"):("settingsForm-input textarea invalid-input")}
             name="bio"
             onChange={(e) => props.handleChange(e)}
             value={props.settings.bio}
             />
         </label>
         <label>
-          <h3 className="settingsForm-label">Password</h3>
+          <h3 className={props.settings.isValid.password === true ? ("settingsForm-label"):("settingsForm-label invalid-label")}>Password</h3>
           <input
-            className="settingsForm-input password"
+            className={props.settings.isValid.password === true ? ("settingsForm-input password"):("settingsForm-input password invalid-input")}
             type="Password"
             name="password"
             onChange={(e) => props.handleChange(e)}

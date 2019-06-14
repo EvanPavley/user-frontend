@@ -78,6 +78,25 @@
 	height: 20px;
 }
 
-textarea:focus, input:focus, select:focus{
-    outline: none;
+.settingsForm-input:focus{
+  outline: none;
+  border: 1px solid #6BE1FF;
+  box-shadow: 0 0 2px 0.5px #6BE1FF;
+}
+
+.invalid-label::after{
+  content: " * this feild is required/invalid";
+  color: #ff7070;
+  font-weight: normal;
+  font-size: .7em;
+}
+
+.invalid-input{
+  border: 1px solid #ff7070;
+}
+
+.invalid-input.settingsForm-input:focus{
+  outline: none;
+  border: 1px solid #ff8e8e;
+  box-shadow: 0 0 2px 0.5px #ff8e8e;
 }

@@ -36,6 +36,12 @@ class App extends React.Component {
             bio: currentSettings[0].bio,
             password: currentSettings[0].password,
             isClear: false,
+            isValid: {
+              name: true,
+              email: true,
+              bio: true,
+              password: true,
+            }
           })
         :
           this.setState({
@@ -88,6 +94,12 @@ class App extends React.Component {
         this.setState({
           id: currentSettings._id,
           isClear: false,
+          isValid: {
+            name: true,
+            email: true,
+            bio: true,
+            password: true,
+          }
         })
       })
     :
@@ -108,7 +120,25 @@ class App extends React.Component {
     })
       .then(response => response.json())
       .then(currentSettings => {
-        console.log(currentSettings);
+        currentSettings.errors !== undefined ?
+        Object.keys(currentSettings.errors).forEach(feild => {
+          this.setState(prevState => ({
+            ...prevState,
+            isValid: {
+              ...prevState.isValid,
+              [feild]: false
+            }
+          }))
+        })
+        :
+        this.setState({
+          isValid: {
+            name: true,
+            email: true,
+            bio: true,
+            password: true,
+          }
+        })
       })
   }
 
@@ -128,6 +158,12 @@ class App extends React.Component {
           bio: '',
           password: '',
           isClear: true,
+          isValid: {
+            name: true,
+            email: true,
+            bio: true,
+            password: true,
+          }
         })
       })
     :
@@ -140,6 +176,12 @@ class App extends React.Component {
       bio: '',
       password: '',
       isClear: true,
+      isValid: {
+        name: true,
+        email: true,
+        bio: true,
+        password: true,
+      }
     })
   }
 
