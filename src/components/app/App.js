@@ -1,6 +1,6 @@
 /*
 App:
-The main component for the frontend of this user settings app
+The main class component for the frontend of this user settings app
 ***
 This component does the heavy lifting for this app. Because this app is not very complex, there only needed to be two components, all of the state is held in app and its manipulated via call back fucntions passed down to the settings form through props. All of the interaction with the server happens in this component.
 */
@@ -209,7 +209,6 @@ class App extends React.Component {
 
 
   render () {
-    console.log(this.state)
     return (
       <div className="app-container">
         <div className="userSettings-container">
