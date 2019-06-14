@@ -62,6 +62,17 @@ class App extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+
+    this.setState(prevState => ({
+      ...prevState,
+      isValid: {
+        name: true,
+        email: true,
+        bio: true,
+        password: true,
+      }
+    }))
+
     this.state.isClear === true ?
     fetch(BACKEND_URL, {
         method: 'POST',
@@ -91,7 +102,8 @@ class App extends React.Component {
           }))
         })
         :
-        this.setState({
+        this.setState(prevState => ({
+          ...prevState,
           id: currentSettings._id,
           isClear: false,
           isValid: {
@@ -100,7 +112,7 @@ class App extends React.Component {
             bio: true,
             password: true,
           }
-        })
+        }))
       })
     :
     fetch(`${BACKEND_URL}/${this.state.id}`, {
@@ -131,14 +143,15 @@ class App extends React.Component {
           }))
         })
         :
-        this.setState({
+        this.setState(prevState => ({
+          ...prevState,
           isValid: {
             name: true,
             email: true,
             bio: true,
             password: true,
           }
-        })
+        }))
       })
   }
 
