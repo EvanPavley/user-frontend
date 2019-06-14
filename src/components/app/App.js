@@ -5,6 +5,7 @@ import userIcon from '../../assets/images/userIcon.svg'
 const BACKEND_URL = 'http://localhost:3001/userSettings'
 
 class App extends React.Component {
+  //initial state declaration
   state = {
     id: '',
     name: '',
@@ -26,6 +27,7 @@ class App extends React.Component {
     fetch(BACKEND_URL)
       .then(response => response.json())
       .then(currentSettings => {
+        //checks to see if there are settings in the API
         currentSettings[0] !== undefined ?
           this.setState({
             id: currentSettings[0]._id,
@@ -44,10 +46,54 @@ class App extends React.Component {
             }
           })
         :
-          this.setState({
-            isClear: true,
-          })
+        //if not the form is clear
+        this.setState({
+          isClear: true,
+        })
       })
+  }
+
+  resetValidations = () => {
+    this.setState(prevState => ({
+      ...prevState,
+      isValid: {
+        name: true,
+        email: true,
+        bio: true,
+        password: true,
+      }
+    }))
+  }
+
+  resetState = () => {
+    this.setState({
+      id: '',
+      name: '',
+      email: '',
+      updates: true,
+      location: 'New York, NY',
+      bio: '',
+      password: '',
+      isClear: true,
+      isValid: {
+        name: true,
+        email: true,
+        bio: true,
+        password: true,
+      }
+    })
+  }
+
+  findInvalid = (feilds) => {
+    feilds.forEach(feild => {
+      this.setState(prevState => ({
+        ...prevState,
+        isValid: {
+          ...prevState.isValid,
+          [feild]: false
+        }
+      }))
+    })
   }
 
   handleChange = (event) => {
@@ -62,17 +108,7 @@ class App extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-
-    this.setState(prevState => ({
-      ...prevState,
-      isValid: {
-        name: true,
-        email: true,
-        bio: true,
-        password: true,
-      }
-    }))
-
+    this.resetValidations()
     this.state.isClear === true ?
     fetch(BACKEND_URL, {
         method: 'POST',
@@ -92,15 +128,7 @@ class App extends React.Component {
       .then(response => response.json())
       .then(currentSettings => {
         currentSettings.errors !== undefined ?
-        Object.keys(currentSettings.errors).forEach(feild => {
-          this.setState(prevState => ({
-            ...prevState,
-            isValid: {
-              ...prevState.isValid,
-              [feild]: false
-            }
-          }))
-        })
+        this.findInvalid(Object.keys(currentSettings.errors))
         :
         this.setState(prevState => ({
           ...prevState,
@@ -133,25 +161,9 @@ class App extends React.Component {
       .then(response => response.json())
       .then(currentSettings => {
         currentSettings.errors !== undefined ?
-        Object.keys(currentSettings.errors).forEach(feild => {
-          this.setState(prevState => ({
-            ...prevState,
-            isValid: {
-              ...prevState.isValid,
-              [feild]: false
-            }
-          }))
-        })
+        this.findInvalid(Object.keys(currentSettings.errors))
         :
-        this.setState(prevState => ({
-          ...prevState,
-          isValid: {
-            name: true,
-            email: true,
-            bio: true,
-            password: true,
-          }
-        }))
+        this.resetValidations()
       })
   }
 
@@ -162,40 +174,10 @@ class App extends React.Component {
       })
       .then(response => response.json())
       .then(currentSettings => {
-        this.setState({
-          id: '',
-          name: '',
-          email: '',
-          updates: true,
-          location: 'New York, NY',
-          bio: '',
-          password: '',
-          isClear: true,
-          isValid: {
-            name: true,
-            email: true,
-            bio: true,
-            password: true,
-          }
-        })
+        this.resetState()
       })
     :
-    this.setState({
-      id: '',
-      name: '',
-      email: '',
-      updates: true,
-      location: 'New York, NY',
-      bio: '',
-      password: '',
-      isClear: true,
-      isValid: {
-        name: true,
-        email: true,
-        bio: true,
-        password: true,
-      }
-    })
+    this.resetState()
   }
 
 

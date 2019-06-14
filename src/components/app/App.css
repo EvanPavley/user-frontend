@@ -31,3 +31,24 @@
   float:left;
   margin-left: 50px;
 }
+
+@media only screen and (max-width: 500px) {
+  .userSettings-container{
+
+    max-width: 95%;
+
+    padding-bottom: 35px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    background-position: right 10px top 12.5%, 0 0;
+    background-size: 370px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .user-icon{
+    height: 35px;
+    width: 35px;
+  }
+}
