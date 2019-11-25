@@ -2,6 +2,8 @@
 
 <img alt="User-setting-image" src="images/User-setting-image.png" width="320px" height="200px">
 
+[Demo Video](https://www.youtube.com/watch?v=C8Uaq1n0-eM&feature=youtu.be)
+
 This is a simple user settings page that I designed and built to test out using a react front-end with a Node JS, Express and MongoDB back-end
 
 The form has many validations on the front and back-end
